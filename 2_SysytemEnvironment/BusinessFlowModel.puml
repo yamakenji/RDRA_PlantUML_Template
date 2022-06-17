@@ -1,0 +1,32 @@
+@startuml
+
+title 業務フロー図
+
+|会員|
+start
+
+:貸出予約;
+note left
+  貸出本の予約・取消をする
+end note
+
+|図書館員|
+if (予約図書が) then (ある)
+  :予約図書の準備;
+  note right
+    予約図書一覧を出力する
+    ----
+    予約図書を取り置く
+  end note
+else (ない)
+  stop
+endif
+|会員|
+:予約図書を受け取る;
+note left
+取置図書を消し込む
+end note
+
+end
+
+@enduml

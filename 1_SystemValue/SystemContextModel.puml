@@ -1,0 +1,24 @@
+@startuml
+
+title システムコンテキスト図
+
+' アクター
+actor "アクター" as Actor1
+
+' 外部システム
+node 外部システム as ExternalSystem
+
+' システム
+package システム {
+  usecase "アプリケーション" as App1
+
+}
+
+Actor1 -- App1
+ExternalSystem -- App1
+
+note right of App1
+  システム化の目的
+end note
+
+@enduml

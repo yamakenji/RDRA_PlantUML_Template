@@ -1,0 +1,61 @@
+@startuml
+
+title "ビジネスコンテキスト図"
+
+frame 凡例 {
+  ' 業務
+  usecase/ "業務"
+
+  ' ビジネス要素
+  artifact "ビジネス要素"
+
+  ' アクター
+  actor "アクター"
+
+  ' 会社
+  node "会社"
+
+  ' 組織
+  package "組織"
+}
+
+'''''
+' 図書館システムの例
+'''''
+
+actor "会員" as Member
+
+node 図書館 {
+  Package "窓口" {
+      actor/ "図書館員" as Staff
+  }
+
+  Package "司書室" {
+      actor/ "司書" as Librarian
+  }
+
+  usecase/ "会員管理" as MemberManagement
+  usecase/ "貸出・返却" as LendingAndReturning
+  usecase/ "蔵書管理" as CollectionsManagement
+
+  artifact "蔵書" as LibraryCollections
+  artifact "書架" as Bookshelf
+}
+
+node 書籍店 as BookStore
+
+' 関連
+Member - MemberManagement
+Staff -- MemberManagement
+
+Member - LendingAndReturning
+Staff -- LendingAndReturning
+LibraryCollections -- LendingAndReturning
+Bookshelf -- LendingAndReturning
+
+LibraryCollections -- CollectionsManagement
+Bookshelf -- CollectionsManagement
+Librarian -- CollectionsManagement
+BookStore -- CollectionsManagement
+
+@enduml

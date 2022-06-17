@@ -1,0 +1,34 @@
+@startuml
+
+
+title ユースケース複合図
+
+frame 凡例 {
+  ' ユースケース
+  usecase ユースケース
+  ' 画面
+  boundary 画面
+  ' 情報
+  entity 情報
+  ' イベント
+  control イベント
+  ' 条件
+  file 条件
+
+  画面 -- ユースケース
+  情報 -- ユースケース
+  条件 -- ユースケース
+  イベント -- ユースケース
+}
+
+usecase 予約図書一覧を出力する as OutputReservedBookList
+
+entity 貸出予約 as ReserveBook
+boundary 貸出予約一覧 as LendingReservationList
+file 貸出予約一覧出力条件 as LendingReservationListOutputConditions
+
+OutputReservedBookList -- LendingReservationList
+LendingReservationList - LendingReservationListOutputConditions
+OutputReservedBookList - ReserveBook
+
+@enduml

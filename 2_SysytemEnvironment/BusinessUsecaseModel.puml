@@ -1,0 +1,55 @@
+@startuml
+
+title ビジネスユースケース図
+
+frame 凡例 {
+  ' 業務
+  usecase/ "ビジネスユースケース"
+
+    ' アクター
+  actor "アクター"
+
+  ' ビジネス要素
+  artifact "ビジネス要素"
+
+  ' 会社
+  node "会社"
+
+  ' 組織
+  package "組織"
+}
+
+package 貸出・返却 {
+
+  actor "会員" as Member
+  Actor/ "図書館員" as Staff
+
+  Package "窓口" as Counter {
+  }
+
+  artifact "蔵書" as LibraryCollections
+  artifact "書架" as Bookshelf
+
+  usecase/ "窓口貸出" as LendBooksAtTheCounter
+  usecase/ "Web予約" as ReserveBooksOnWeb
+  usecase/ "返却" as ReturnBooks
+
+}
+
+' 関連
+LendBooksAtTheCounter -- Staff
+LendBooksAtTheCounter -- LibraryCollections
+LendBooksAtTheCounter -- Counter
+LendBooksAtTheCounter -- Bookshelf
+
+ReserveBooksOnWeb -- Member
+ReserveBooksOnWeb -- Staff
+ReserveBooksOnWeb -- LibraryCollections
+ReserveBooksOnWeb -- Bookshelf
+
+ReturnBooks -- Staff
+ReturnBooks -- LibraryCollections
+ReturnBooks -- Bookshelf
+ReturnBooks -- Counter
+
+@enduml

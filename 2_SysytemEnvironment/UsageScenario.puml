@@ -1,0 +1,41 @@
+@startuml
+
+title 利用シーン図
+
+frame 凡例 {
+  'アクター
+  actor アクター
+  'ユースケース
+  usecase ユースケース
+  '利用シーン
+  usecase/ 利用シーン
+  note right
+    シナリオ
+  end note
+
+  アクター -- 利用シーン
+  ユースケース -- 利用シーン
+}
+
+actor "会員" as Member
+Actor "図書館員" as Staff
+
+usecase/ "会員登録" as RegisterMember
+note right
+  本の貸出・返却時の単純化のために事前に会員登録を行う
+  すでに図書カードを導入しているが、忘れす人が多いため図書カード
+  以外での確認方法も欲しい
+  新しい機器を持たない老人もいるので図書カードもそのまま残したい
+  会員登録も利用者本人でできるようにしたい
+end note
+
+usecase "会員IDを発行する" as IssueMemberId
+usecase "会員カードを作成する" as CreateMembershipCard
+
+Member -- RegisterMember
+Staff -- RegisterMember
+
+RegisterMember -- IssueMemberId
+RegisterMember -- CreateMembershipCard
+
+@enduml

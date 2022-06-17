@@ -1,0 +1,16 @@
+@startuml
+
+' 要求モデル図
+
+title 要求モデル図
+
+' アクター
+actor "アクター" as Actor1
+
+' 要求
+usecase "ここに要求を書く" as Requirement1
+
+' アクターと要求の関連
+Actor1  -- Requirement1
+
+@enduml
