@@ -4,13 +4,46 @@
 
 title 要求モデル図
 
-' アクター
-actor "アクター" as Actor1
+frame "凡例" {
+  ' アクター
+  actor "アクター" as Actor1
 
-' 要求
-usecase "ここに要求を書く" as Requirement1
+  ' 要求
+  usecase "ここに要求を書く" as Requirement1
 
-' アクターと要求の関連
-Actor1  -- Requirement1
+  ' アクターと要求の関連
+  Actor1  -- Requirement1
+}
+
+
+actor "会員" as Member
+actor/ "図書館員" as Staff
+actor/ "司書" as Librarian
+
+usecase "見たい本が図書館にあるかをWeb検索したい" as Des01
+usecase "借りたい本をWebで予約したい" as Des02
+
+usecase "本の貸出、返却手続きを簡素化したい" as Des03
+usecase "本の在庫をリアルタイムで把握したい" as Des04
+
+usecase "本の購入を簡素化したい" as Des05
+
+usecase "Webで借りたい本を検索でき、そのまま予約できること" as Req01
+usecase "本の貸出と返却を簡易に行え、リアルタイムで在庫に反映できること" as Req02
+usecase "本の購入をWebで直接行え、購入した本の情報を連携してシステムに取り込めること" as Req03
+
+Member -- Des01
+Member -- Des02
+Des01 -- Req01
+Des02 -- Req01
+
+Staff -- Des03
+Staff -- Des04
+Des03 -- Req02
+Des04 -- Req02
+
+Librarian -- Des05
+Des05 -- Req03
+
 
 @enduml
