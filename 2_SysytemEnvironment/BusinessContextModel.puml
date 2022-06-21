@@ -27,11 +27,11 @@ actor "会員" as Member
 
 node 図書館 {
   Package "窓口" {
-      actor/ "図書館員" as Staff
+      actor "図書館員" as Staff
   }
 
   Package "司書室" {
-      actor/ "司書" as Librarian
+      actor "司書" as Librarian
   }
 
   usecase/ "会員管理" as MemberManagement
@@ -45,7 +45,7 @@ node 図書館 {
 node 書籍店 as BookStore
 
 ' 関連
-Member - MemberManagement
+Member -- MemberManagement
 Staff -- MemberManagement
 
 Member - LendingAndReturning
