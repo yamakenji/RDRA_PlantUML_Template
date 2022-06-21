@@ -2,4 +2,33 @@
 
 title 状態モデル図
 
+state 凡例 {
+  state "状態A" as StateA
+  state "ユースケース1" as Usecase1 <<usecase>>
+
+  [*] --> StateA
+  StateA --> Usecase1
+}
+
+state 貸出中 {
+  state 期限内
+  state 期限切れ
+}
+
+state 在庫中
+
+state 貸出期限を確認する <<usecase>>
+state 蔵書の貸出を登録する <<usecase>>
+state 貸出図書の返却を登録する <<usecase>>
+
+[*] -> 在庫中
+在庫中 --> 蔵書の貸出を登録する
+蔵書の貸出を登録する --> 期限内
+期限内 --> 貸出期限を確認する
+貸出期限を確認する --> 期限内
+貸出期限を確認する --> 期限切れ : [貸出期限 < 今日]
+貸出中 --> 貸出図書の返却を登録する : [貸出期限 >= 今日]
+貸出図書の返却を登録する --> 在庫中
+在庫中 --> [*]
+
 @enduml

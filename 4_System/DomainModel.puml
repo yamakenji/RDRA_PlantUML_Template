@@ -2,6 +2,24 @@
 
 title 情報モデル図
 
+frame 凡例 {
+  Entity 情報
+}
 
+Entity "貸出予約" as ReserveBook
+Entity "貸出図書" as LendedBook
+Entity "会員" as Member
+Entity "本" as Book
+Entity "蔵書" as LibraryCollections
+Entity "書架" as Bookshelf
+Entity "書籍発注" as OrderBook
+
+Member -- ReserveBook
+Member -- LendedBook
+Book -- LendedBook
+Book -- ReserveBook
+Book -- LibraryCollections
+Book -- OrderBook
+LibraryCollections -- Bookshelf
 
 @enduml
