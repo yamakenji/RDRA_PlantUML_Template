@@ -17,8 +17,8 @@ frame "凡例" {
 
 
 actor "会員" as Member
-actor/ "図書館員" as Staff
-actor/ "司書" as Librarian
+actor "図書館員" as Staff
+actor "司書" as Librarian
 
 usecase "見たい本が図書館にあるかをWeb検索したい" as Des01
 usecase "借りたい本をWebで予約したい" as Des02

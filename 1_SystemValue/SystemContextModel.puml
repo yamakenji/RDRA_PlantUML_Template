@@ -2,23 +2,42 @@
 
 title システムコンテキスト図
 
-' アクター
-actor "アクター" as Actor1
+frame 凡例 {
+  ' アクター
+  actor "アクター" as Actor1
 
-' 外部システム
-node 外部システム as ExternalSystem
+  ' 外部システム
+  node 外部システム as ExternalSystem
 
-' システム
-package システム {
-  usecase "アプリケーション" as App1
+  ' システム
+  package システム {
+    usecase "アプリケーション" as App1
 
+  }
+
+  Actor1 -- App1
+  ExternalSystem -- App1
+
+  note right of App1
+    <u>システム化の目的</u>
+  end note
 }
 
-Actor1 -- App1
-ExternalSystem -- App1
+actor "会員" as Member
+actor "図書館員" as Staff
+actor "司書" as Librarian
 
-note right of App1
-  システム化の目的
+usecase "図書館システム" as LibraryManagementSystem
+
+LibraryManagementSystem -- Member
+LibraryManagementSystem -- Staff
+LibraryManagementSystem -- Librarian
+
+note right of LibraryManagementSystem
+<u>システム化の目的</u>
+図書館員の作業（書籍購買の自動連携）を支援し、
+本の貸出・返却業務において会員を待たせないスムーズな運用を実現する。
+蔵書管理をリアルタイムで行い検索・在庫など会員サービスを向上させる。
 end note
 
 @enduml
